@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест на духовные дары</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="welcome-screen" class="screen active">
+            <h1>Тест на определение духовных даров</h1>
+            <p class="description">
+                Этот тест поможет вам определить ваши духовные дары и таланты.
+                Пожалуйста, отвечайте искренне на каждый вопрос, основываясь на вашем личном опыте.
+            </p>
+            <button onclick="startTest()" class="btn-primary">Начать тест</button>
+        </div>
+
+        <div id="test-screen" class="screen">
+            <div class="progress-bar">
+                <div id="progress"></div>
+            </div>
+            <div id="question-container"></div>
+            <div class="answers-grid">
+                <button onclick="submitAnswer(1)" class="btn-answer">1<span>Совершенно не согласен</span></button>
+                <button onclick="submitAnswer(2)" class="btn-answer">2<span>Скорее не согласен</span></button>
+                <button onclick="submitAnswer(3)" class="btn-answer">3<span>Затрудняюсь ответить</span></button>
+                <button onclick="submitAnswer(4)" class="btn-answer">4<span>Скорее согласен</span></button>
+                <button onclick="submitAnswer(5)" class="btn-answer">5<span>Полностью согласен</span></button>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h2>Ваши духовные дары</h2>
+            <div id="results-container"></div>
+            <button onclick="restartTest()" class="btn-primary">Пройти тест заново</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
