@@ -3,40 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест на духовные дары</title>
+    <title>Тест духовных даров</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div id="app">
-        <div id="welcome-screen" class="screen active">
-            <h1>Тест на определение духовных даров</h1>
-            <p class="description">
-                Этот тест поможет вам определить ваши духовные дары и таланты.
-                Пожалуйста, отвечайте искренне на каждый вопрос, основываясь на вашем личном опыте.
-            </p>
-            <button onclick="startTest()" class="btn-primary">Начать тест</button>
-        </div>
-
-        <div id="test-screen" class="screen">
-            <div class="progress-bar">
-                <div id="progress"></div>
+    <div class="container">
+        <!-- Заголовок -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-dove"></i>
+                    Тест духовных даров
+                </h1>
+                <p class="subtitle">Откройте свои духовные дары и найдите свое предназначение в служении</p>
             </div>
-            <div id="question-container"></div>
-            <div class="answers-grid">
-                <button onclick="submitAnswer(1)" class="btn-answer">1<span>Совершенно не согласен</span></button>
-                <button onclick="submitAnswer(2)" class="btn-answer">2<span>Скорее не согласен</span></button>
-                <button onclick="submitAnswer(3)" class="btn-answer">3<span>Затрудняюсь ответить</span></button>
-                <button onclick="submitAnswer(4)" class="btn-answer">4<span>Скорее согласен</span></button>
-                <button onclick="submitAnswer(5)" class="btn-answer">5<span>Полностью согласен</span></button>
-            </div>
-        </div>
+        </header>
 
-        <div id="results-screen" class="screen">
-            <h2>Ваши духовные дары</h2>
-            <div id="results-container"></div>
-            <button onclick="restartTest()" class="btn-primary">Пройти тест заново</button>
-        </div>
+        <!-- Информационная секция -->
+        <section class="info-section" id="info-section">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h2>О тесте</h2>
+                <p>Тест на определение духовных даров – это инструмент, который произведет индивидуальный анализ ваших духовных даров. Обнаружение и использование данных Богом духовных даров поможет вам получить удовлетворение в христианской жизни и служении.</p>
+                
+                <div class="test-details">
+                    <div class="detail-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span>72 вопроса</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>~15 минут</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Детальный анализ</span>
+                    </div>
+                </div>
+
+                <button class="start-btn" id="start-btn">
+                    <span>Начать тест</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Тест -->
+        <section class="test-section" id="test-section" style="display: none;">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="current-question">1</span> из <span id="total-questions">72</span>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-card">
+                    <h3 class="question-text" id="question-text"></h3>
+                    
+                    <div class="options-container">
+                        <label class="option" id="option-1">
+                            <input type="radio" name="answer" value="1">
+                            <span class="option-text">Совершенно не согласен</span>
+                        </label>
+                        
+                        <label class="option" id="option-2">
+                            <input type="radio" name="answer" value="2">
+                            <span class="option-text">Не согласен</span>
+                        </label>
+                        
+                        <label class="option" id="option-3">
+                            <input type="radio" name="answer" value="3">
+                            <span class="option-text">Нейтрально</span>
+                        </label>
+                        
+                        <label class="option" id="option-4">
+                            <input type="radio" name="answer" value="4">
+                            <span class="option-text">Согласен</span>
+                        </label>
+                        
+                        <label class="option" id="option-5">
+                            <input type="radio" name="answer" value="5">
+                            <span class="option-text">Полностью согласен</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="nav-btn prev-btn" id="prev-btn" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Назад</span>
+                </button>
+                <button class="nav-btn next-btn" id="next-btn">
+                    <span>Далее</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Результаты -->
+        <section class="results-section" id="results-section" style="display: none;">
+            <div class="results-card">
+                <div class="results-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h2>Ваши духовные дары</h2>
+                </div>
+                
+                <div class="gifts-container" id="gifts-container">
+                    <!-- Результаты будут добавлены динамически -->
+                </div>
+
+                <div class="results-actions">
+                    <button class="action-btn restart-btn" id="restart-btn">
+                        <i class="fas fa-redo"></i>
+                        <span>Пройти тест заново</span>
+                    </button>
+                    <button class="action-btn share-btn" id="share-btn">
+                        <i class="fas fa-share"></i>
+                        <span>Поделиться результатами</span>
+                    </button>
+                </div>
+            </div>
+        </section>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html> 
