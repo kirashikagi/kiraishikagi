@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тест духовных даров</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -13,11 +13,16 @@
         <!-- Заголовок -->
         <header class="header">
             <div class="header-content">
-                <h1 class="title">
+                <div class="header-icon">
                     <i class="fas fa-dove"></i>
-                    Тест духовных даров
-                </h1>
+                </div>
+                <h1 class="title">Тест духовных даров</h1>
                 <p class="subtitle">Откройте свои духовные дары и найдите свое предназначение в служении</p>
+                <div class="header-decoration">
+                    <div class="decoration-line"></div>
+                    <div class="decoration-dot"></div>
+                    <div class="decoration-line"></div>
+                </div>
             </div>
         </header>
 
@@ -28,16 +33,42 @@
                     <i class="fas fa-lightbulb"></i>
                 </div>
                 <h2>О тесте</h2>
-                <p>Тест на определение духовных даров – это инструмент, который произведет индивидуальный анализ ваших духовных даров. Обнаружение и использование данных Богом духовных даров поможет вам получить удовлетворение в христианской жизни и служении.</p>
+                <p>Тест на определение духовных даров поможет вам раскрыть ваши уникальные способности для служения. Мы определим ваши основные дары и вспомогательные таланты для эффективного служения в церкви.</p>
                 
+                <div class="gifts-preview">
+                    <h3>Основные дары, которые мы определим:</h3>
+                    <div class="gifts-grid">
+                        <div class="gift-preview">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Апостольский</span>
+                        </div>
+                        <div class="gift-preview">
+                            <i class="fas fa-users"></i>
+                            <span>Пасторский</span>
+                        </div>
+                        <div class="gift-preview">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Учительский</span>
+                        </div>
+                        <div class="gift-preview">
+                            <i class="fas fa-eye"></i>
+                            <span>Пророческий</span>
+                        </div>
+                        <div class="gift-preview">
+                            <i class="fas fa-globe"></i>
+                            <span>Евангелизационный</span>
+            </div>
+                    </div>
+                </div>
+
                 <div class="test-details">
                     <div class="detail-item">
                         <i class="fas fa-question-circle"></i>
-                        <span>72 вопроса</span>
+                        <span>25 вопросов</span>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-clock"></i>
-                        <span>~15 минут</span>
+                        <span>~8 минут</span>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-chart-pie"></i>
@@ -47,8 +78,8 @@
 
                 <button class="start-btn" id="start-btn">
                     <span>Начать тест</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
             </div>
         </section>
 
@@ -59,12 +90,16 @@
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
                 <div class="progress-text">
-                    <span id="current-question">1</span> из <span id="total-questions">72</span>
+                    <span id="current-question">1</span> из <span id="total-questions">25</span>
                 </div>
             </div>
 
             <div class="question-container">
                 <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">Вопрос <span id="question-number">1</span></div>
+                        <div class="question-category" id="question-category">Апостольский дар</div>
+                    </div>
                     <h3 class="question-text" id="question-text"></h3>
                     
                     <div class="options-container">
@@ -94,30 +129,41 @@
                         </label>
                     </div>
                 </div>
-            </div>
+                    </div>
 
             <div class="navigation-buttons">
                 <button class="nav-btn prev-btn" id="prev-btn" disabled>
                     <i class="fas fa-arrow-left"></i>
                     <span>Назад</span>
-                </button>
-                <button class="nav-btn next-btn" id="next-btn">
+                            </button>
+                <button class="nav-btn next-btn" id="next-btn" disabled>
                     <span>Далее</span>
                     <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
+                            </button>
+                        </div>
         </section>
 
         <!-- Результаты -->
         <section class="results-section" id="results-section" style="display: none;">
             <div class="results-card">
                 <div class="results-header">
-                    <i class="fas fa-chart-bar"></i>
+                    <div class="results-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
                     <h2>Ваши духовные дары</h2>
+                    <p>Анализ ваших ответов показал следующие результаты</p>
+                    </div>
+
+                <div class="main-gifts" id="main-gifts">
+                    <!-- Основные дары будут добавлены динамически -->
                 </div>
-                
-                <div class="gifts-container" id="gifts-container">
-                    <!-- Результаты будут добавлены динамически -->
+
+                <div class="supporting-gifts" id="supporting-gifts">
+                    <!-- Вспомогательные дары будут добавлены динамически -->
+                </div>
+
+                <div class="results-summary" id="results-summary">
+                    <!-- Общий анализ будет добавлен динамически -->
                 </div>
 
                 <div class="results-actions">
